@@ -1,0 +1,13 @@
+Flickr Username:
+  <%= form_with url: static_pages_path, method: :get do |form| %>
+    <%= form.text_field :username, required: true %><br><br>
+  <% end %>
+<% unless @photo_count.nil? %>
+  <% for i in 0...@photo_count %>
+    <% @photo_id = @photos[i].id %>
+    <% @secret = @photos[i].secret %>
+    <% @server = @photos[i].server %>
+    <% @url = 'https://live.staticflickr.com/' + @server + '/' + @photo_id + '_' + @secret + '.jpg' %>
+    <img src=<%= @url %>><br>
+  <% end %>
+<% end %>
